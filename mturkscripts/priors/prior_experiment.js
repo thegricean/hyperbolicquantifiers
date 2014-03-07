@@ -310,7 +310,7 @@ var experiment = {
       for (var i = 0; i <= 9; i++)
       {        
         if (intervals > 1) {
-          label = (intervals * i).toString() + "~" + (intervals * (i+1) - 1).toString();
+          label = (intervals * i).toString() + " ~ " + (intervals * (i+1) - 1).toString();
         } else {
           label = (intervals * i).toString()
         }
