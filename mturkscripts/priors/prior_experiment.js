@@ -152,7 +152,7 @@ var allConditions =
 [
 [
 {"food":"blueberries"},
-{"food":"m&m's"},
+{"food":"M&M's"},
 {"food":"strawberries"},
 {"food":"cookies"},
 {"food":"bananas"},
