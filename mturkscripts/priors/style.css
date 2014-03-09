@@ -78,6 +78,13 @@ button[disabled] {
     text-align: center;
 }
 
+#small{
+    margin: 0auto;
+    margin-top: 0em;
+    font-size: 14px;
+    text-align: center;
+}
+
 #type {
     margin: 0 auto;
     margin-top: 8em;

@@ -301,6 +301,7 @@ var experiment = {
       $("#personB").html(personB);
       $("#food1").html(trial.food);
       $("#food2").html(trial.food);
+      //$("#food3").html(trial.food);
 
       currentQuantity = quantitiesArray[numComplete];
       $("#quantity").html(currentQuantity);

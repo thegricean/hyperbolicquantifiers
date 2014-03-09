@@ -157,7 +157,7 @@ function pressEnter(e) {
 <div class="slide" id="description">
 <p id='logo-text'>Instructions</p>
 <p class="block-text"> You will see <span id="tot-num">{{}}</span> scenarios displayed on the screen. </p>
-<p class="block-text"> In each scenario, someone brought food items to a party. Please give your best estimate of how likely it is that another person ate a certain amount of the food items. </p>
+<p class="block-text"> In each scenario, someone brought food items to a party. Please give your best estimate of how likely it is that another person at the party ate a certain amount of the food items. </p>
 </br>
 </br>
 <div id="form">
@@ -195,11 +195,11 @@ function pressEnter(e) {
     </br>
     
     <span id="questionPart2">
-    <p id="question">Please rate how likely it is that <span id="personB">{{}}</span> ate the following amounts of <span id="food2">{{}}</span>.</p>
+    <p id="question">Please rate how likely it is that <span id="personB">{{}}</span>, who was also at the party, ate the following amounts of <span id="food2">{{}}</span>.</p>
     <table cellspacing="0" cellpadding="0" border="0" align="center"><tbody>
     <tr>
       <td align="right" height="72">
-        Extremely likely &#8210;<br>
+        <span id="small">Extremely likely &#8210;</span><br>
       </td>
       <td rowspan="5" width="100" align="center"><div id="slider0">&nbsp;</div></td>
       <td rowspan="5" width="100" align="center"><div id="slider1">&nbsp;</div></td>
@@ -215,22 +215,22 @@ function pressEnter(e) {
     </tr>
     <tr>
       <td align="right" height="72">
-        Very Likely &#8210;<br>
+        <span id="small">Very Likely &#8210;</span><br>
       </td>
     </tr>
     <tr>
       <td align="right" height="72">
-        Neutral &#8210;<br>
+        <span id="small">Neutral &#8210;</span><br>
       </td>
     </tr>
     <tr>
       <td align="right" height="72">
-        Not very likely &#8210;<br>
+        <span id="small">Not very likely &#8210;</span><br>
       </td>
     </tr>
     <tr>
       <td align="right" height="72">
-        Impossible &#8210;<br>
+        <span id="small">Impossible &#8210;</span><br>
       </td>
     </tr>
     <tr>
