@@ -1,19 +1,19 @@
 # Read priors data
 food.priors <- read.csv("../data/priors/long_30.csv")
 food.priors$totalQuant <- factor(food.priors$totalQuant)
-food.priors$eatenQuantLabels <- ifelse(food.priors$eatenQuant==10, food.priors$eatenQuant, 
-                                       food.priors$eatenQuant * 10)
+food.priors$eatenQuantLabels <- food.priors$eatenQuant * 10
 food.priors$eatenQuant <- factor(food.priors$eatenQuant)
+food.priors$eatenQuantLabels <- factor(food.priors$eatenQuantLabels)
 
 # Average across subjects
 food.priors.summary <- summarySE(food.priors, measurevar="probability", 
-                                 groupvars=c("food", "totalQuant", "eatenQuant"))
+                                 groupvars=c("food", "totalQuant", "eatenQuantLabels"))
 
-# Visualize individaul items/quantities
-food.example <- "blueberries"
-food.priors.example <- subset(food.priors.summary, food==food.example)
-ggplot(food.priors.example, aes(x=eatenQuant, y=probability, fill=totalQuant)) +
-  facet_grid(.~totalQuant) +
+# Visualize items/quantities
+ggplot(food.priors.summary, aes(x=eatenQuantLabels, y=probability, fill=totalQuant)) +
+  facet_grid(food~totalQuant) +
   geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymax=probability+se, ymin=probability-se), width=0.2) +
-  theme_bw()
+  theme_bw() +
+  xlab("Percentage eaten (%)") +
+  scale_fill_discrete(guide=FALSE)
