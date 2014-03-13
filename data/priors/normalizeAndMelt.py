@@ -21,7 +21,7 @@ for l in f:
     if firstline == 0:
         firstline = 1
     else:
-        l = l.strip()
+        l = l.strip().replace('"', "")
         toks = l.split("\t")
         numTrials = len(toks[item_indices[0]].split(","))
         
