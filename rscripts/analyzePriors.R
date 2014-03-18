@@ -1,5 +1,5 @@
 # Read priors data
-food.priors <- read.csv("../data/priors/long_30.csv")
+food.priors <- read.csv("../data/priors/long_50.csv")
 food.priors$totalQuant <- factor(food.priors$totalQuant)
 food.priors$eatenQuantLabels <- food.priors$eatenQuant * 10
 food.priors$eatenQuant <- factor(food.priors$eatenQuant)

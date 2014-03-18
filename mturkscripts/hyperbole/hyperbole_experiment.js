@@ -136,17 +136,6 @@ function getRadioCheckedValue(formNum, radio_name)
    return '';
 }
 
-function randomizeSharpOffset()
-{
-  
-  var r = Math.floor((Math.random()*6)+1);
-  if (r < 4) { return r; }
-  else { return 3-r; }
-  /*
-  var r = Math.floor((Math.random()*3)+1);
-  return r;
-  */
-}
 
 var allConditions = 
 [
@@ -179,6 +168,9 @@ var numComplete = 0;
 var currentQuantity;
 var quantitiesArray = [10, 10, 10, 100, 100, 100];
 quantitiesArray = shuffle(quantitiesArray);
+var currentQuantifier;
+var quantifiersArray = ["some", "some", "some", "all", "all", "all"];
+quantifiersArray = shuffle(quantifiersArray);
 allNames = shuffle(allNames);
 
 showSlide("instructions");
@@ -205,6 +197,7 @@ var experiment = {
   orders: new Array(numTrials),
   foods: new Array(numTrials),
   quantities: new Array(numTrials),
+  quantifiers: new Array(numTrials),
   personAs: new Array(numTrials),
   personBs: new Array(numTrials),
   
@@ -273,6 +266,8 @@ var experiment = {
       experiment.foods[currentTrialNum] = trial.food;
 
       experiment.quantities[currentTrialNum] = currentQuantity;
+
+      experiment.quantifiers[currentTrialNum] = currentQuantifier;
       
         	
       clearForm(document.forms[0]);
@@ -308,6 +303,9 @@ var experiment = {
 
       currentQuantity = quantitiesArray[numComplete];
       $("#quantity").html(currentQuantity);
+
+      currentQuantifier = quantifiersArray[numComplete];
+      $("#quantifier").html(currentQuantifier);
       
 
       intervals = currentQuantity / 10
