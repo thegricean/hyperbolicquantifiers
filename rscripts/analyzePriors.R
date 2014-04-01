@@ -1,5 +1,6 @@
 # Read priors data
 food.priors <- read.csv("../data/priors/long_50.csv")
+food.priors$food <- factor(food.priors$food, levels=c("blueberries", "M&M's", "strawberries", "cookies", "bananas", "pies"))
 food.priors$totalQuant <- factor(food.priors$totalQuant)
 food.priors$eatenQuantLabels <- food.priors$eatenQuant * 10
 food.priors$eatenQuant <- factor(food.priors$eatenQuant)
@@ -16,4 +17,5 @@ ggplot(food.priors.summary, aes(x=eatenQuantLabels, y=probability, fill=totalQua
   geom_errorbar(aes(ymax=probability+se, ymin=probability-se), width=0.2) +
   theme_bw() +
   xlab("Percentage eaten (%)") +
-  scale_fill_discrete(guide=FALSE)
+  scale_fill_discrete(guide=FALSE) +
+  ggtitle("Priors")
