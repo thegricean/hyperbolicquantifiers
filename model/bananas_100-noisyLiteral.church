@@ -1,0 +1,38 @@
+(define total 100)
+(define prior '(0.722341831099179 0.0932667600765786 0.0445141383030179 0.0221376453330857 0.0206290175823893 0.0186694455828786 0.0152281309530143 0.0159754298726 0.0154160230112571 0.0141109523742786 0.0177106258117389))
+(define all-noise 0.01)
+(define some-noise 0.01)
+
+(define (state-prior) (multinomial states prior))
+(define (no-none-state-prior) 
+  (if (equal? total '100) 
+  (state-prior)
+  (multinomial (rest states) (rest prior))))
+
+(define states (list '0 '1 '2 '3 '4 '5 '6 '7 '8 '9 '10))
+
+(define utterances (list 'some 'all))
+
+(define (utterance-prior) (multinomial utterances '(0.5 0.5)))
+
+(define (noisy-all) (if (flip all-noise)
+                        (state-prior)
+                        '10))
+
+(define (noisy-some) (if (flip some-noise)
+                         (state-prior)
+                         (no-none-state-prior)))
+
+(define (choose-interpretation utterance)
+  (if (equal? utterance 'all)
+      (noisy-all)
+      (noisy-some)))
+
+
+(define (interpret-utterance utterance)
+  (enumeration-query
+   (define state (state-prior))
+   state
+   (equal? state (choose-interpretation utterance))))
+
+(list (interpret-utterance 'some) (interpret-utterance 'all))

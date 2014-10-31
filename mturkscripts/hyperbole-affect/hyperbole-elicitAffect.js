@@ -1,4 +1,4 @@
-var NUM_SLIDERS = 1;
+var NUM_SLIDERS = 0;
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -148,16 +148,22 @@ function randomizeSharpOffset()
   */
 }
 
+//var quantifiersArray = ["some", "all"];
+
+var foodTypes = ["blueberries", "M&M's", "strawberries", "cookies", "bananas", "pies"];
+var totalQuants = [10, 100];
 var allConditions = 
 [
 [
-/*
-{"food":"pies", "totalQuant": 10, "eatenQuant":0},
-{"food":"pies", "totalQuant": 10, "eatenQuant":10},
-{"food":"pies", "totalQuant": 100, "eatenQuant":0},
-{"food":"pies", "totalQuant": 100, "eatenQuant":10},
-*/
+{"eatenQuant":7, "quantifier": "all", "condition": "hyperbolic"},
+{"eatenQuant":8, "quantifier": "all", "condition": "hyperbolic"},
+{"eatenQuant":9, "quantifier": "all", "condition": "hyperbolic"},
+{"eatenQuant":10, "quantifier": "all", "condition": "true-all"},
+{"eatenQuant":10, "quantifier": "some", "condition": "literal-some"},
+{"eatenQuant":0, "quantifier": "all", "condition": "ironic"},
+{"eatenQuant":3, "quantifier": "some", "condition": "true-some"},
 
+/*
 {"food":"blueberries", "totalQuant": 10, "eatenQuant":0},
 {"food":"blueberries", "totalQuant": 10, "eatenQuant":1},
 {"food":"blueberries", "totalQuant": 10, "eatenQuant":2},
@@ -224,6 +230,7 @@ var allConditions =
 {"food":"strawberries", "totalQuant": 100, "eatenQuant":8},
 {"food":"strawberries", "totalQuant": 100, "eatenQuant":9},
 {"food":"strawberries", "totalQuant": 100, "eatenQuant":10},
+
 {"food":"cookies", "totalQuant": 10, "eatenQuant":0},
 {"food":"cookies", "totalQuant": 10, "eatenQuant":1},
 {"food":"cookies", "totalQuant": 10, "eatenQuant":2},
@@ -290,6 +297,7 @@ var allConditions =
 {"food":"pies", "totalQuant": 100, "eatenQuant":8},
 {"food":"pies", "totalQuant": 100, "eatenQuant":9},
 {"food":"pies", "totalQuant": 100, "eatenQuant":10},
+*/
 ]
 ];
 
@@ -306,7 +314,7 @@ if(debug) { allConditions = debugConditions; }
 var numConditions = allConditions.length;
 var chooseCondition = random(0, numConditions-1);
 var allTrialOrders = allConditions[chooseCondition];
-var numTrials = allTrialOrders.length/ 6;
+var numTrials = allTrialOrders.length;
 var shuffledOrder = shuffledSampleArray(allTrialOrders.length, numTrials);
 var currentTrialNum = 0;
 var trial;
@@ -323,8 +331,11 @@ var experiment = {
 	totalQuants: new Array(numTrials),
 	eatenQuants: new Array(numTrials),
   preciseEatenQuants: new Array(numTrials),
-  
+  quantifiers: new Array(numTrials),
+  conditions: new Array(numTrials),
+
   affects: new Array(numTrials),
+
   orders: new Array(numTrials),
   personAs: new Array(numTrials),
   personBs: new Array(numTrials),
@@ -360,9 +371,9 @@ var experiment = {
   next: function() {
     if (numComplete > 0) {
       //var price = 0;//parseFloat(document.price.score.value) + parseFloat(document.price.score1.value) / 100.00;
-      var probAffect = parseInt(document.getElementById("hiddenSliderValue0").value) / 40.00;
+      var affect = document.affectForm.affect.value;
       
-      experiment.affects[currentTrialNum] = probAffect;
+      experiment.affects[currentTrialNum] = affect;
       experiment.orders[currentTrialNum] = numComplete;
       //experiment.preciseEatenQuants[currentTrialNum] = document.getElementById("preciseEatenQuant").innerHTML;
         	
@@ -383,20 +394,31 @@ var experiment = {
     	trial = allTrialOrders[shuffledOrder[numComplete]];
       personA = allNames.shift();
       personB = allNames.shift();
+      quantifier = trial.quantifier;
+      food = foodTypes.random();
+      totalQuant = totalQuants.random();
 
       experiment.personAs[numComplete] = personA;
       experiment.personBs[numComplete] = personB;
-      experiment.foods[numComplete] = trial.food;
-      experiment.totalQuants[numComplete] = trial.totalQuant;
+      experiment.foods[numComplete] = food;
+
+      experiment.totalQuants[numComplete] = totalQuant;
       experiment.eatenQuants[numComplete] = trial.eatenQuant;
+      experiment.quantifiers[numComplete] = quantifier;
+      experiment.conditions[numComplete] = trial.condition;
 
       showSlide("stage");
       $("#personA1").html(personA);
       $("#personA2").html(personA);
+      $("#personA3").html(personA);
+      $("#personA4").html(personA);
       $("#personB1").html(personB);
       $("#personB2").html(personB);
-      $("#totalQuantity").html(trial.totalQuant);
-      if (trial.totalQuant == 10) {
+      $("#personB3").html(personB);
+      $("#personB4").html(personB);
+      $("#totalQuantity").html(totalQuant);
+      $("#quantifier").html(quantifier);
+      if (totalQuant == 10) {
         var preciseEatenQuant = trial.eatenQuant;
       } else if (trial.eatenQuant == 10) {
         var preciseEatenQuant = 100;
@@ -405,8 +427,8 @@ var experiment = {
       }
       $("#eatenQuantity").html(preciseEatenQuant);
       experiment.preciseEatenQuants[numComplete] = preciseEatenQuant;
-      $("#food1").html(trial.food);
-      $("#food2").html(trial.food);
+      $("#food1").html(food);
+      $("#food2").html(food);
       //var utteredSliderIndexName = "#cost" + currentUtteredPriceSliderIndex;
       //$(utteredSliderIndexName).html(numberWithCommas(currentUtteredPrice));
       numComplete++;
@@ -414,24 +436,4 @@ var experiment = {
   }
 }
 
-// scripts for sliders
-               
-
-$("#slider0").slider({
-               animate: true,
-               
-               max: 40 , min: 0, step: 1, value: 20,
-               slide: function( event, ui ) {
-                   $("#slider0 .ui-slider-handle").css({
-                      "background":"#E0F5FF",
-                      "border-color": "#001F29"
-                   });
-               },
-               change: function( event, ui ) {
-                   $('#hiddenSliderValue0').attr('value', ui.value);
-                   $("#slider0").css({"background":"#99D6EB"});
-                   $("#slider0 .ui-slider-handle").css({
-                     "background":"#667D94",
-                     "border-color": "#001F29" });
-               }});
 

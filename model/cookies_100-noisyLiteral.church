@@ -1,0 +1,42 @@
+(define total 100)
+(define prior '(0.495955944541 0.204125360157038 0.1025982421867 0.055038868474 0.0378439524281762 0.0286918864614243 0.0210323612051862 0.0176644141386957 0.0145227505308576 0.01284254066221 0.00968367921475286))
+(define all-noise 0.01)
+(define some-noise 0.01)
+
+(define (state-prior) (multinomial states prior))
+; Literal interpretation of "some" in the condition where the total food items is 10
+; requires never sampling from the '0 state because it is none.
+(define (no-none-state-prior) 
+  (if (equal? total '100) 
+  (state-prior)
+  (multinomial (rest states) (rest prior))))
+
+(define states (list '0 '1 '2 '3 '4 '5 '6 '7 '8 '9 '10))
+
+(define utterances (list 'some 'all))
+
+(define (utterance-prior) (multinomial utterances '(0.5 0.5)))
+
+(define (noisy-all) (if (flip all-noise)
+                        ; in noisy interpretation, default to prior
+                        (state-prior)
+                        ; else interpret literally
+                        '10))
+
+(define (noisy-some) (if (flip some-noise)
+                         (state-prior)
+                         (no-none-state-prior)))
+
+(define (choose-interpretation utterance)
+  (if (equal? utterance 'all)
+      (noisy-all)
+      (noisy-some)))
+
+
+(define (interpret-utterance utterance)
+  (enumeration-query
+   (define state (state-prior))
+   state
+   (equal? state (choose-interpretation utterance))))
+
+(list (interpret-utterance 'some) (interpret-utterance 'all))

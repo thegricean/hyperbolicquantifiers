@@ -1,0 +1,100 @@
+(define total 10)
+(define (state-prior) (multinomial states '(0.135253491890105 0.229438236794562 0.158480646931712 0.1442578913401 0.102662989942346 0.0663848741142615 0.0477774497967154 0.0372885960580192 0.0292220857689385 0.026108547734705 0.0231251896286119)))
+(define affect-prior (list '(0 0.103846153846154) '(1 0.1578125) '(2 0.155) '(3 0.3125) '(4 0.339583333333333) '(5 0.405555555555556) '(6 0.570833333333333) '(7 0.585714285714286) '(8 0.656666666666667) '(9 0.670833333333333) '(10 0.658333333333333) ))
+(define depth 1)
+(define hardness 1)
+
+(define goals 
+  (list 'precise-state-affect
+        'rough-state-affect
+        'just-precise-state
+        'just-rough-state
+        'just-affect
+        'just-any
+        'any-affect))
+
+(define (goal-prior) (multinomial goals '(0.2 0.2 0.2 0.2 0.2 0.2 0.2)))
+
+(define states (list '0 '1 '2 '3 '4 '5 '6 '7 '8 '9 '10))
+
+(define utterances (list 'some 'all))
+
+(define (utterance-prior) (multinomial utterances '(0.5 0.5)))
+
+(define affects (list '0 '1))
+
+(define (sample-affect state prior)
+  (let ((current-state-affect-pair (first prior)))
+    (if (equal? state (first current-state-affect-pair))
+        (if (flip (second current-state-affect-pair))
+            '1
+            '0)
+        (sample-affect state (rest prior)))))
+
+
+(define (literal-interpretation utterance state)
+  ; if utterance is "all"
+  (if (equal? utterance 'all)
+    ; return true if eaten state is '10
+      (equal? state '10)
+  ; else if utterance is "some"
+    ; if total quantity is 10
+      (if (equal? total '10)
+        ; return true if eaten state is not '0 (not "none")
+        (not (equal? state '0))
+        ; else return true (because there is no "none" state when the total quantity is 100)
+        (equal? state state))
+      )
+  )
+
+(define (roughly-equal? state1 state2)
+  (<= (abs (- state1 state2)) 1))
+
+(define (goal-satisfied? goal listener-state-affect-pair speaker-state speaker-affect)
+  (case goal
+    (('precise-state-affect) (and (equal? (first listener-state-affect-pair) speaker-state)
+     (equal? (second listener-state-affect-pair) speaker-affect)))
+    (('rough-state-affect) (and (roughly-equal? (first listener-state-affect-pair) speaker-state)
+     (equal? (second listener-state-affect-pair) speaker-affect)))
+    (('just-precise-state) (equal? (first listener-state-affect-pair) speaker-state))
+    (('just-rough-state) (roughly-equal? (first listener-state-affect-pair) speaker-state))
+    (('just-affect) (equal? (second listener-state-affect-pair) speaker-affect))
+    (('just-any) (if (and (equal? total 0) (equal? speaker-state 0))
+                     (equal? (first listener-state-affect-pair) 0)
+                     ( > (first listener-state-affect-pair) 0)))
+        (('any-affect) (if (and (equal? total 0) (equal? speaker-state 0))
+                     (and (equal? (first listener-state-affect-pair) 0) 
+                          (equal? (second listener-state-affect-pair) speaker-affect))
+                     (and ( > (first listener-state-affect-pair) 0)
+                          (equal? (second listener-state-affect-pair) speaker-affect))))
+        ))
+
+
+;; The model is currently restricted to hardness=1
+(define speaker
+  (mem (lambda (state affect goal depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   utterance
+    (goal-satisfied? goal (apply multinomial (listener utterance depth)) state affect)
+   ))))
+
+(define listener
+  (mem (lambda (utterance depth)
+  (enumeration-query
+   (define state (state-prior))
+   (define affect (sample-affect state affect-prior))
+   (define speaker-goal (goal-prior))
+   
+   (list state affect)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance state)
+       (equal? utterance
+               (apply multinomial (speaker state affect speaker-goal (- depth 1)))))
+   ))))
+
+(define (sample-one utterance) 
+  (listener utterance depth))
+
+(list (sample-one 'some) (sample-one 'all))

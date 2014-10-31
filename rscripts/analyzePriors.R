@@ -8,7 +8,9 @@ food.priors$eatenQuantLabels <- factor(food.priors$eatenQuantLabels)
 
 # Average across subjects
 food.priors.summary <- summarySE(food.priors, measurevar="probability", 
-                                 groupvars=c("food", "totalQuant", "eatenQuantLabels"))
+                                 groupvars=c("food", "totalQuant", "eatenQuant"))
+
+write.csv(food.priors.summary, "../data/priors/means_50.csv")
 
 # Visualize items/quantities
 ggplot(food.priors.summary, aes(x=eatenQuantLabels, y=probability, fill=totalQuant)) +

@@ -1,0 +1,141 @@
+workerID,gender,age,income,language,condition,order,pesonA,personB,food,totalQuant,eatenQuant,preciseEatenQuant,quantifier,affect
+1,F,35,4,English,true-some,1,Kathy,Yvonne,pies,100,3,35,some,She is upset
+1,F,35,4,English,hyperbolic,2,Diana,Henry,blueberries,100,9,90,all,she is angry
+1,F,35,4,English,hyperbolic,3,Mary,Ivan,bananas,10,7,7,all,she is disgusted
+1,F,35,4,English,literal-some,4,Heather,Matt,pies,10,10,10,some,she is outraged
+1,F,35,4,English,ironic,5,Zack,Stephanie,bananas,10,0,0,all,he is mistaken
+1,F,35,4,English,hyperbolic,6,Rebecca,Frank,M&M's,10,8,8,all,she is crazed
+1,F,35,4,English,true-all,7,Oliver,Fiona,cookies,10,10,10,all,he is upset
+2,M,35,8,English,hyperbolic,1,Olga,Henry,cookies,100,8,84,all,She feels irritated by Henry's behavior.
+2,M,35,8,English,hyperbolic,2,Tracy,Larry,cookies,10,9,9,all,Tracy feels anger towards Larry for eating all the cookies.
+2,M,35,8,English,literal-some,3,Rebecca,Jake,pies,100,10,100,some,Rebecca feels disgust towards Jake for eating all those pies.
+2,M,35,8,English,true-some,4,Cathy,Lena,bananas,100,3,35,some,Cathy felt surprise that Lena can eat so many bananas.
+2,M,35,8,English,ironic,5,Steven,Winston,cookies,10,0,0,all,Steven was confused as to why Winston ate some many cookies but not his.
+2,M,35,8,English,true-all,6,Bob,Kathy,M&M's,100,10,100,all,Bob is annoyed that Kathy greedily ate all the M&M's from everyone else.
+2,M,35,8,English,hyperbolic,7,Diana,Iris,cookies,100,7,70,all,Diana is frustrated that one person  Iris  ate so many of her cookies.
+3,M,35,4,English,hyperbolic,1,Mary,Grace,cookies,100,8,85,all,Mary is mad Grace ate most of the cookies
+3,M,35,4,English,ironic,2,Henry,Fiona,M&M's,10,0,0,all,Henry feels confused about who ate them
+3,M,35,4,English,hyperbolic,3,Calvin,Larry,bananas,10,7,7,all,Calvin is mad that Larry ate most of the bananas
+3,M,35,4,English,literal-some,4,Oliver,Emma,cookies,10,10,10,some,Oliver is mad at how many cookies Emma ate
+3,M,35,4,English,true-some,5,Frank,Yvonne,pies,100,3,35,some,Frank is mad that Yvonne ate a lot of the pies
+3,M,35,4,English,true-all,6,Barbara,Winston,blueberries,10,10,10,all,Barbara is mad that Winston ate all of the blueberries
+3,M,35,4,English,hyperbolic,7,Cathy,Albert,strawberries,10,9,9,all,Cathy is angry at how many Albert ate
+4,F,35,6,English,true-all,1,Oliver,Grace,M&M's,10,10,10,all,Oliver's angry that Grace ate all the M&M's without sharing it with others
+4,F,35,6,English,hyperbolic,2,Henry,Fiona,blueberries,100,9,98,all,Henry feels Fiona's selfish
+4,F,35,6,English,ironic,3,Patty,Tracy,bananas,100,0,6,all,Patty feels Tracy deserved less banana
+4,F,35,6,English,literal-some,4,Bob,Kevin,blueberries,100,10,100,some,Bob feels Kevin's selfish
+4,F,35,6,English,hyperbolic,5,Lena,Kathy,blueberries,10,8,8,all,Lena is angry that Kathy ate majority of the blueberries
+4,F,35,6,English,true-some,6,Heather,Stephanie,pies,100,3,36,some,Heather feels appreciated that Heather ate some of her pies
+4,F,35,6,English,hyperbolic,7,Larry,Edward,bananas,10,7,7,all,Larry feels Edward is selfish
+5,F,25,8,English,ironic,1,Patty,Olga,M&M's,10,0,0,all,She hates her so much  she'd make up lies about her.
+5,F,25,8,English,hyperbolic,2,Grace,Heather,strawberries,10,9,9,all,She felt like she actually ate them all.
+5,F,25,8,English,hyperbolic,3,Jake,Albert,M&M's,100,7,75,all,He's mad that he didn't share.
+5,F,25,8,English,hyperbolic,4,Rebecca,Victoria,pies,100,8,80,all,She feels like Victoria is deadly obease and needs help.
+5,F,25,8,English,true-some,5,Winston,Cathy,cookies,10,3,3,some,She feels neutral toward her.
+5,F,25,8,English,literal-some,6,Kevin,Mary,blueberries,10,10,10,some,He wants to stick up for her.
+5,F,25,8,English,true-all,7,Nancy,Barbara,blueberries,10,10,10,all,She's upset she didn't share.
+6,M,35,6,english,ironic,1,Rebecca,Zack,blueberries,100,0,3,all,rebecca is mad zack ate all the blueberries 
+6,M,35,6,english,hyperbolic,2,Diana,Kathy,M&M's,10,9,9,all,diana is mad kathy ate all of the m&ms
+6,M,35,6,english,literal-some,3,Jane,Victor,bananas,100,10,100,some,jane doesn't mind that victor ate some bananas 
+6,M,35,6,english,hyperbolic,4,Oliver,Mary,bananas,100,7,77,all,oliver is mad mary ate all the bananas
+6,M,35,6,english,true-all,5,Robert,Winston,strawberries,100,10,100,all,robert is mad winston ate all the strawberries
+6,M,35,6,english,true-some,6,Heather,Lena,pies,100,3,38,some,heather doesn't mind that lena ate some of the pies
+6,M,35,6,english,hyperbolic,7,Grace,Victoria,bananas,100,8,84,all,grave is mad victoria ate all the bananas
+7,M,25,8,English,true-all,1,Barbara,Rebecca,blueberries,10,10,10,all,Barbara is upset that Rebecca ate all of the blueberries Barbara brought to the party.
+7,M,25,8,English,hyperbolic,2,Edward,Patrick,cookies,100,7,76,all,Edward is annoyed that Patrick ate most of the cookies brought to the party.
+7,M,25,8,English,literal-some,3,Matt,Diana,pies,100,10,100,some,Matt is angry that Diana ate all of the pies he brought to the party.
+7,M,25,8,English,ironic,4,Ann,Albert,strawberries,100,0,8,all,Ann is incorrectly angry that Albert ate all of the strawberries; he only ate a small amount of them.
+7,M,25,8,English,hyperbolic,5,Oliver,Wendy,cookies,100,8,86,all,Oliver is upset that Wendy ate most of the cookies he brought to the party.
+7,M,25,8,English,true-some,6,Heather,Iris,blueberries,100,3,36,some,Heather is annoyed that Iris ate all of the blueberries  even though she didn't.
+7,M,25,8,English,hyperbolic,7,Winston,Nancy,bananas,100,9,99,all,Winston is upset that Nancy ate all of the bananas  except for one.
+8,M,25,6,english,true-all,1,Zack,David,M&M's,100,10,100,all,Annoyed
+8,M,25,6,english,hyperbolic,2,Albert,Barbara,blueberries,100,7,74,all,surprised
+8,M,25,6,english,true-some,3,Olga,Larry,pies,10,3,3,some,Irked
+8,M,25,6,english,literal-some,4,Wendy,Victor,bananas,10,10,10,some,Mad
+8,M,25,6,english,ironic,5,Kathy,Cathy,blueberries,100,0,7,all,Unphased
+8,M,25,6,english,hyperbolic,6,Kevin,Robert,cookies,10,9,9,all,pissed
+8,M,25,6,english,hyperbolic,7,Calvin,Victoria,strawberries,100,8,82,all,upset
+9,M,45,4,English,hyperbolic,1,Matt,Yvonne,strawberries,10,9,9,all,Matt feels displeased.
+9,M,45,4,English,ironic,2,Zack,Mary,strawberries,100,0,5,all,Zack feels upset.
+9,M,45,4,English,true-some,3,Albert,Steven,M&M's,10,3,3,some,Albert feels surprised.
+9,M,45,4,English,literal-some,4,Tracy,Rebecca,M&M's,10,10,10,some,Tracy feels surprised.
+9,M,45,4,English,hyperbolic,5,Robert,Ivan,blueberries,100,7,73,all,Robert feels displeased.
+9,M,45,4,English,true-all,6,Barbara,Iris,cookies,10,10,10,all,Barbara feels shocked.
+9,M,45,4,English,hyperbolic,7,Bob,Frank,bananas,100,8,83,all,Bob feels stunned.
+10,F,45,6,english,hyperbolic,1,Victor,Larry,blueberries,100,9,90,all,Larry is selfish!
+10,F,45,6,english,hyperbolic,2,Grace,Wendy,pies,100,7,71,all,Wendy is a pig.
+10,F,45,6,english,ironic,3,Yvonne,Winston,cookies,10,0,0,all,I feel bad  I don't think Winston liked the cookies I brought.
+10,F,45,6,english,literal-some,4,Kevin,Fiona,pies,100,10,100,some,I'm annoyed that Fiona ate all the pies and didn't allow anyone else to try them.
+10,F,45,6,english,true-some,5,Mary,Zack,cookies,10,3,3,some,I'm glad that Zack enjoyed the cookies!
+10,F,45,6,english,true-all,6,Jake,Robert,cookies,10,10,10,all,It's so frustrating that Robert ate all the cookies.
+10,F,45,6,english,hyperbolic,7,Oliver,Henry,cookies,10,8,8,all,Henry is so selfish to eat the majority of the cookies I brought.
+11,F,55,4,English.,true-all,1,Victoria,Albert,M&M's,10,10,10,all,Felt that Albert was very Selfish.
+11,F,55,4,English.,true-some,2,Grace,Tom,pies,100,3,34,some,Grace was surprised at how many pies Tom ate
+11,F,55,4,English.,literal-some,3,Nancy,Frank,M&M's,100,10,100,some,Nancy was not happy that Frank at all of the M&M's at the party
+11,F,55,4,English.,ironic,4,Ivan,Yvonne,bananas,100,0,7,all,Ivan thinks that Yvonne love's banana's.
+11,F,55,4,English.,hyperbolic,5,Cathy,Calvin,bananas,10,8,8,all,Cathy thought that Calvin should not have eaten 8 bananas.
+11,F,55,4,English.,hyperbolic,6,Patty,Ann,blueberries,10,9,9,all,Patty was not happy that Ann ate 9 blueberries and was very selfish and didn't think about other's.
+11,F,55,4,English.,hyperbolic,7,Heather,Tracy,M&M's,100,7,75,all,Heather was very unsatisfied that Tracey at most of the M&M's.
+12,F,45,4,English,true-some,1,Calvin,Edward,bananas,100,3,38,some,I think Calvin liked that Calvin ate 38 bananas.
+12,F,45,4,English,true-all,2,Albert,Stephanie,pies,100,10,100,all,I think Albert was incredulous that Stephanie ate all of the pies.
+12,F,45,4,English,hyperbolic,3,Kathy,Victor,strawberries,10,8,8,all,I think that Kathy was angry with Victor for eating so many strawberries.
+12,F,45,4,English,literal-some,4,Ann,Jane,cookies,100,10,100,some,I think Ann was happy to see Jane eating her cookies.
+12,F,45,4,English,ironic,5,Lena,Patty,bananas,10,0,0,all,I think Lena was annoyed that Patty did not eat any bananas.
+12,F,45,4,English,hyperbolic,6,Robert,Barbara,M&M's,10,7,7,all,I think Robert was annoyed that Barbara ate so many M&M's.
+12,F,45,4,English,hyperbolic,7,Tracy,Kevin,bananas,100,9,92,all,I think Tracy was annoyed that Kevin ate so many bananas.
+13,M,35,0,English,hyperbolic,1,Calvin,Grace,blueberries,100,9,98,all,He's not happy about it.
+13,M,35,0,English,true-some,2,Patrick,Steven,bananas,100,3,32,some,He must have been hungry for bananas.
+13,M,35,0,English,true-all,3,Wendy,Henry,blueberries,100,10,100,all,SHe thinks he's a pig.
+13,M,35,0,English,hyperbolic,4,Larry,Matt,cookies,100,8,82,all,He feels that Matt ate way too many cookies.
+13,M,35,0,English,ironic,5,Robert,Frank,cookies,10,0,0,all,He thinks Frank is a pig  but in reality he isn't.
+13,M,35,0,English,hyperbolic,6,Kevin,Oliver,pies,100,7,76,all,He's not impressed with Oliver's behaviour.
+13,M,35,0,English,literal-some,7,Kathy,Lena,bananas,100,10,100,some,He's not happy and grossly misjudged the amount conusmed.
+14,F,35,6,english,hyperbolic,1,Edward,Robert,pies,10,8,8,all,disappointed
+14,F,35,6,english,ironic,2,Emma,Victor,bananas,100,0,3,all,liar
+14,F,35,6,english,true-some,3,Zack,Victoria,blueberries,100,3,34,some,fair
+14,F,35,6,english,literal-some,4,Kathy,Henry,bananas,100,10,100,some,angry
+14,F,35,6,english,hyperbolic,5,Diana,Tom,pies,10,9,9,all,a little bad
+14,F,35,6,english,true-all,6,Bob,Patrick,M&M's,10,10,10,all,what he said was true
+14,F,35,6,english,hyperbolic,7,Rebecca,Ann,blueberries,100,7,79,all,a little disappointed
+15,M,35,6,English,hyperbolic,1,Kevin,Tom,pies,100,9,97,all,Kevin feels disgust that Tom ate 97 pies.
+15,M,35,6,English,true-some,2,Bob,Ivan,cookies,10,3,3,some,Bob is excited for whatever reason about the fact that Ivan ate three cookies.
+15,M,35,6,English,literal-some,3,Victor,Jane,bananas,10,10,10,some,Victor is excited about Jane eating bananas because of innuendo.
+15,M,35,6,English,ironic,4,George,Ann,M&M's,100,0,6,all,George is excited and confused because he is mentally divergent in a way that makes him believe that six is all of one hundred. 
+15,M,35,6,English,hyperbolic,5,Grace,Calvin,blueberries,100,8,89,all,Grace is excited that Calvin likes blueberries enough to eat 89 of them. 
+15,M,35,6,English,hyperbolic,6,Nancy,Winston,bananas,10,7,7,all,Nancy is excited because Winston ate a majority of the bananas. 
+15,M,35,6,English,true-all,7,Fiona,Yvonne,pies,100,10,100,all,Fiona is amazed and excited that Yvonne could eat one hundred pies.
+16,F,25,4,English,hyperbolic,1,Larry,Frank,bananas,100,9,96,all,I think he feels annoyed that one person ate all of his food at the party.
+16,F,25,4,English,ironic,2,Yvonne,Matt,bananas,10,0,0,all,Yvonne feels amazed that Matt could have eaten all the bananas.
+16,F,25,4,English,true-all,3,Grace,Rebecca,blueberries,10,10,10,all,Grace feels shocked that Rebecca ate all of the blueberries.
+16,F,25,4,English,hyperbolic,4,Winston,Victoria,strawberries,100,8,80,all,Winston feels annoyed that Victoria ate all of the blueberries.
+16,F,25,4,English,true-some,5,Victor,Barbara,cookies,10,3,3,some,Victor feels happy that Barbara tried some of the cookies he brought.
+16,F,25,4,English,literal-some,6,Fiona,Cathy,pies,10,10,10,some,Fiona feels amazed that Cathy could eat all of the pies
+16,F,25,4,English,hyperbolic,7,Mary,Jane,blueberries,10,7,7,all,Mary feels annoyed that Jane ate all of the blueberries and didn't share.
+17,M,35,4,English ,ironic,1,Victoria,Iris,M&M's,100,0,1,all,She wrongly feels that her friend ate all of the candy she brought. 
+17,M,35,4,English ,true-some,2,Diana,Patrick,blueberries,100,3,31,some,She feels that he ate a portion of them and seems okay with it. 
+17,M,35,4,English ,literal-some,3,Ivan,Olga,blueberries,100,10,100,some,Ivan is incorrect about the amount but feels okay thinking some were eaten by Olga. 
+17,M,35,4,English ,hyperbolic,4,Bob,Victor,strawberries,10,7,7,all,Bob seems upset for thinking Victor ate all of them. 
+17,M,35,4,English ,true-all,5,Nathan,Kathy,blueberries,10,10,10,all,Nathan correctly is upset that Kathy was selfish and ate them all. 
+17,M,35,4,English ,hyperbolic,6,David,Jane,bananas,100,8,88,all,David is upset because Jane ate pretty much all of them. 
+17,M,35,4,English ,hyperbolic,7,Henry,Steven,bananas,100,9,91,all,Henry feels surprised that Steven would eat almost all of the bananas.
+18,F,35,0,English,hyperbolic,1,Fiona,Wendy,strawberries,100,8,86,all,Fiona feels that Wendy was greedy and took too many.
+18,F,35,0,English,hyperbolic,2,Tom,Tracy,pies,10,9,9,all,Tom thinks that Tracy was greedy and should have saved them.
+18,F,35,0,English,literal-some,3,Robert,Barbara,strawberries,100,10,100,some,Robert thinks Barbara ate too many strawberries but isn't too worried about it.
+18,F,35,0,English,true-some,4,Frank,Ivan,cookies,10,3,3,some,Frank thinks that Ivan ate an acceptable amount of cookies.
+18,F,35,0,English,ironic,5,Larry,Nancy,M&M's,100,0,3,all,Larry thinks that Nancy ate too many M&M's.
+18,F,35,0,English,true-all,6,Jake,Iris,blueberries,10,10,10,all,Jake thinks that Iris was greedy and ate too many blueberries.
+18,F,35,0,English,hyperbolic,7,Stephanie,Diana,cookies,100,7,73,all,Stephanie thinks that Diana ate too many cookies and should have left some.
+19,M,35,6,english,ironic,1,Nathan,Robert,bananas,100,0,6,all,He feels that Robert ate more than his share.
+19,M,35,6,english,literal-some,2,Zack,Ivan,bananas,100,10,100,some,He feels that Ivan ate a lot of bananas
+19,M,35,6,english,hyperbolic,3,Jane,Olga,M&M's,10,8,8,all,She thinks that Olga is greedy.
+19,M,35,6,english,hyperbolic,4,Rebecca,Calvin,blueberries,10,9,9,all,She thinks that Calvin is a glutton
+19,M,35,6,english,hyperbolic,5,Fiona,Matt,strawberries,100,7,70,all,She thinks that Matt should not have eaten so many
+19,M,35,6,english,true-some,6,Oliver,Steven,blueberries,10,3,3,some,He is surprise by how many Steven ate.
+19,M,35,6,english,true-all,7,Iris,Nancy,bananas,10,10,10,all,She thinks that Nancy should not have eaten all of them.
+20,F,35,6,English,ironic,1,Kevin,Rebecca,pies,100,0,1,all,Kevin felt Rebecca ate too much of the pie and she should not have eaten an entire pie.
+20,F,35,6,English,hyperbolic,2,David,Jane,M&M's,10,7,7,all,David feels Jane behavior was inappropriate and she ate too many M&M's
+20,F,35,6,English,true-some,3,Robert,Edward,blueberries,10,3,3,some,Robert does not feel offended by Edward's behavior.
+20,F,35,6,English,hyperbolic,4,Stephanie,Fiona,pies,10,9,9,all,Stephanie felt offended bu Fiona's behavior and was upset that Fiona ate all of the pies.
+20,F,35,6,English,true-all,5,Ivan,Diana,M&M's,10,10,10,all,Ivan is upset that Diane ate all of the M&M's.
+20,F,35,6,English,literal-some,6,Ann,Henry,bananas,10,10,10,some,Ann feels fine with Henry's behavior and did not emphasize the fact that Henry ate all of the bananas.
+20,F,35,6,English,hyperbolic,7,Grace,Winston,strawberries,10,8,8,all,Grace does not like Winston's behavior and felt that Winston's should not have eaten the amount of strawberries that he ate.
