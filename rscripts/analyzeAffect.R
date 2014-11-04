@@ -197,6 +197,21 @@ m.affect <- rbind(m.affect, m.prior)
 
 ggplot(m.affect, aes(x=eatenQuant, y=probAffect, color=quantifier)) +
   geom_point(size=3) + 
+  geom_line(aes(group=quantifier)) +
+  theme_bw() +
+  scale_color_manual(values=c("#ff6666", "#66cccc", "gray"))
+
+# calculate difference from prior
+m.affect.difference <- join(m.prior, subset(m.affect, quantifier != "prior"), by=c("eatenQuant"))
+colnames(m.affect.difference)[2] <- "priorProb"
+colnames(m.affect.difference)[3] <- "prior"
+m.affect.difference$difference <- m.affect.difference$probAffect - m.affect.difference$priorProb
+
+m.affect.difference$eatenQuant <- factor(m.affect.difference$eatenQuant, 
+                                         levels=c("0%", "10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"))
+ggplot(m.affect.difference, aes(x=eatenQuant, y=difference, color=quantifier)) +
+  geom_point(size=3) + 
+  geom_line(aes(group=quantifier)) +
   theme_bw() +
   scale_color_manual(values=c("#ff6666", "#66cccc", "gray"))
 
