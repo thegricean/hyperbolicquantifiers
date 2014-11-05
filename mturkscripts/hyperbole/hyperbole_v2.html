@@ -3,23 +3,23 @@
   <title>Food</title>
 <script src="https://www.stanford.edu/~dco/common/jquery.min.js"></script>
 <script src="https://www.stanford.edu/~dco/common/mmturkey.0.5.js?nowarn"></script>
-<link rel="stylesheet" href="affectPriors-affect.css" />
+<link rel="stylesheet" href="style_v2.css" />
 <link type="text/css" rel="stylesheet" href="sliders/jquery-ui.css" /></p>
 <script src="sliders/jquery.min.js"></script> <script src="sliders/jquery-ui.min.js"></script>
 </head>
 <body>
 <div class="progress">
-    <div class="bar-wrapper">
-      <div class="bar"></div>
-    </div>
-    <p><span id="trial-num">{{}}</span><span>/</span><span id="total-num">{{}}</span></p>
+	<div class="bar-wrapper">
+	  <div class="bar"></div>
+	</div>
+	<p><span id="trial-num">{{}}</span><span>/</span><span id="total-num">{{}}</span></p>
 </div>
 <div class="slide" id="instructions">
   <img src="images/stanford.png" alt="Stanford University">
     <p id='logo-text'>Stanford Computation and Cognition Lab</p>
   <p class="block-text">
   Thank you for participating in our experiment. In this experiment, we are interested in how
-  people feel about others' behaviors.
+  people make estimations about others' behaviors.
   </p>
   <button type="button" onclick="this.blur(); experiment.description()">Start</button>
 <p class="block-text" id="legal">Legal information: By answering the
@@ -37,7 +37,7 @@
 <script LANGUAGE="JavaScript">
 
 
-function ValidateSliderForm(form){ 
+function ValidateSliderFormPart2(form){ 
     for (var i=0 ; i < NUM_SLIDERS-1; i++)
     {
       var sliderVar = "slider" + i;
@@ -49,6 +49,15 @@ function ValidateSliderForm(form){
     return true;
 }
 
+function ValidateSliderFormPart1(form){ 
+    var i = NUM_SLIDERS-1;
+    var sliderVar = "slider" + i;
+    if (document.getElementById(sliderVar).style.background == "") {
+      alert ( "Please answer all the questions." );
+      return false;
+    }
+    return true;
+}
 
 
 function ValidateForm(form){
@@ -64,7 +73,6 @@ function ValidateForm(form){
         return false; 
     }
 }
-
 
 function ValidateSelect(form) {
     if (form.ageRange.selectedIndex != 0 && form.ageRange.selectedIndex != 1 && form.ageRange.selectedIndex != 2 && form.ageRange.selectedIndex != 3 && form.ageRange.selectedIndex != 4 && form.ageRange.selectedIndex != 5 && form.ageRange.selectedIndex != 6) {
@@ -103,8 +111,8 @@ function ValidateNumberLength(field, length)
         valid = false;
     }
     if (field.value.length > length) {
-        alert("You entered too many numbers. Please make sure your numbers make sense.");
-        valid = false;
+    	alert("You entered too many numbers. Please make sure your numbers make sense.");
+    	valid = false;
     }
     return valid;
 
@@ -135,8 +143,8 @@ function ValidateText(field)
 
 function pressEnter(e) {
     if (e.keyCode == 13) {
-        document.price.next.click();
-        return false;
+    	document.price.next.click();
+    	return false;
     }
 }
 
@@ -149,7 +157,7 @@ function pressEnter(e) {
 <div class="slide" id="description">
 <p id='logo-text'>Instructions</p>
 <p class="block-text"> You will see <span id="tot-num">{{}}</span> scenarios displayed on the screen. </p>
-<p class="block-text"> In each scenario, person A brought food items to a party, and person B ate a certain amount of the items. Please give your best estimate of how A feels about B's behavior.</p>
+<p class="block-text"> In each scenario, someone brought food items to a party. Please give your best estimate of how likely it is that another person at the party ate a certain amount of the food items. </p>
 </br>
 </br>
 <div id="form">
@@ -163,87 +171,120 @@ function pressEnter(e) {
 
 
 <div class="slide" id="stage">
-<!--
-    <p id="statement"><span id="buyer1">{{}}</span> saw his friend's new <span id="domain1">{{}}</span> and asked how much it cost.</p>
-    <p id="statement">His friend said, "The <span id="domain2">{{}}</span> cost <span id="cost">{{}}</span> dollars."</p>
+<!-- 
+	<p id="statement"><span id="buyer1">{{}}</span> saw his friend's new <span id="domain1">{{}}</span> and asked how much it cost.</p>
+	<p id="statement">His friend said, "The <span id="domain2">{{}}</span> cost <span id="cost">{{}}</span> dollars."</p>
     </br>
--->
+ -->
   
-    <p id="statement"><span id="personA1">{{}}</span> brought <span id="totalQuantity">{{}}</span> <span id="food1">{{}}</span> to a party. </p>
-    <p id="statement"><span id="pronoun">{{}}</span> saw that <span id="personB1">{{}}</span> ate <span id="eatenQuantity">{{}}</span> of them. </p>
-    <!--
-    <p id="statement"><span id="personA2">{{}}</span> said to a friend: "<span id="personB2">{{}}</span> ate <span id="quantifier">{{}}</span> of the <span id="food2">{{}}</span>!"
-    -->
-    </br></br>
-
-    <p id="question">How likely is it that <span id="personA4">{{}}</span> feels the following ways about <span id="personB4">{{}}</span>'s behavior?</p>
+  <p id="statement"><span id="personA1">{{}}</span> brought <span id="quantity">{{}}</span> <span id="food1">{{}}</span> to a party. </p>
+  <p id="statement">After the party, <span id="personA2">{{}}</span> said to a friend, "<span id="personB1">{{}}</span> ate <span id="quantifier">{{}}</span> of the <span id="food2">{{}}</span>".
   </br>
-<div id="form">
-    
+   </br>
+  
+    <div id="form">
+      <p id="question">Please rate how likely it is that <span id="personB2">{{}}</span> ate the following number of <span id="food3">{{}}</span>.</p>
     <form name= "affectForm">
-
     <input type="hidden" name="hSlider0" id="hiddenSliderValue0" />
     <input type="hidden" name="hSlider1" id="hiddenSliderValue1" />
     <input type="hidden" name="hSlider2" id="hiddenSliderValue2" />
     <input type="hidden" name="hSlider3" id="hiddenSliderValue3" />
-    <!--
     <input type="hidden" name="hSlider4" id="hiddenSliderValue4" />
     <input type="hidden" name="hSlider5" id="hiddenSliderValue5" />
     <input type="hidden" name="hSlider6" id="hiddenSliderValue6" />
-    <input type="hidden" name="hSlider6" id="hiddenSliderValue7" />
--->
-
-
-    <table width="650" cellspacing="0" cellpadding="0" border="0" align="center">
-
-
-      <tr>
-        <td width="50" align="right"><span class="affect" id="affect0">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider0">&nbsp;</div></td>
-      </tr> 
-      <tr>
-        <td width="50" align="right"><span class="affect" id="affect1">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider1">&nbsp;</div></td>
-      </tr> 
-      <tr>
-        <td width="50" align="right"><span class="affect" id="affect2">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider2">&nbsp;</div></td>
-      </tr> 
-      <tr>
-        <td width="50" align="right"><span class="affect" id="affect3">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider3">&nbsp;</div></td>
-      </tr>
-      <!-- 
-      <tr>
-        <td width="50" valign="top" align="right"><span class="affect" id="affect4">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider4">&nbsp;</div></td>
-      </tr> 
-      <tr>
-        <td width="50" valign="top" align="right"><span class="affect" id="affect5">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider5">&nbsp;</div></td>
-      </tr> 
-      <tr>
-        <td width="50" valign="top" align="right"><span class="affect" id="affect6">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider6">&nbsp;</div></td>
-      </tr> 
-      <tr>
-        <td width="50" valign="top" align="right"><span class="affect" id="affect7">{{}}}</span></td>
-        <td align="center" colspan="3"><div id="slider7">&nbsp;</div></td>
-      </tr>
-  -->
-      <tr>
-        <td width="20" valign="top" align="center"><br /></td>
-        <td width="100" valign="top" align="center">|<br />Impossible</td>
-        <td width="200" valign="top" align="center"><br /></td>
-        <td width="100" valign="top" align="center">|<br />Absolutely certain</td>
-      </tr>
-    </table>
+    <input type="hidden" name="hSlider7" id="hiddenSliderValue7" />
+    <input type="hidden" name="hSlider8" id="hiddenSliderValue8" />
+    <input type="hidden" name="hSlider9" id="hiddenSliderValue9" />
+    <input type="hidden" name="hSlider10" id="hiddenSliderValue10" />
+    </br>
     
-    <button type="button" id="next" onclick="this.blur(); if (ValidateSliderForm(document.affectForm)) {experiment.next();}">Next</button>
+    <table cellspacing="0" cellpadding="0" border="0" align="center"><tbody>
+    <tr>
+      <td align="right" height="50">
+        <span id="small">Absolutely certain &#8210;</span><br>
+      </td>
+      <td rowspan="5" width="50" align="center"><div id="slider0">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider1">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider2">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider3">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider4">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider5">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider6">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider7">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider8">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider9">&nbsp;</div></td>
+      <td rowspan="5" width="50" align="center"><div id="slider10">&nbsp;</div></td>     
+    </tr>
+    <tr>
+      <td align="right" height="70">
+        <span id="small"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" height="70">
+        <span id="small"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" height="70">
+        <span id="small"></span><br>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" height="70">
+        <span id="small">Impossible &#8210;</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="center"><span id="amount0">{{}}</span></td>
+      <td align="center"><span id="amount1">{{}}</span></td>
+      <td align="center"><span id="amount2">{{}}</span></td>
+      <td align="center"><span id="amount3">{{}}</span></td>
+      <td align="center"><span id="amount4">{{}}</span></td>
+      <td align="center"><span id="amount5">{{}}</span></td>
+      <td align="center"><span id="amount6">{{}}</span></td>
+      <td align="center"><span id="amount7">{{}}</span></td>
+      <td align="center"><span id="amount8">{{}}</span></td>
+      <td align="center"><span id="amount9">{{}}</span></td>
+      <td align="center"><span id="amount10">{{}}</span></td>
+    </tr>
+      
+    </tbody></table>
 
+<!--
+    <span id="questionPart1">
+    <p id="question">How likely is it that <span id="buyer3">{{}}</span> thinks the <span id="domain5">{{}}</span> was expensive?</p>
+    <table width="700" cellspacing="0" cellpadding="0" border="0" align="center"><tbody>
+    <tr><td colspan="5">&nbsp;<br /></td></tr>
+    <tr>
+      <td align="center" colspan="5">
+      <div id="slider10">&nbsp;</div></td>
+    </tr><tr>
+      <td width="140" valign="top" align="center">|<br />
+      Impossible</td>
+      <td width="140" valign="top" align="center">|<br />
+      Not very likely</td>
+      <td width="140" valign="top" align="center">|<br />
+      Neutral</td>
+      <td width="140" valign="top" align="center">|<br />
+      Very Likely</td>
+      <td width="140" valign="top" align="center">|<br />
+      Absolutely certain</td>
+    </tr>    
+    </tbody></table>
+    </span>
+  -->
+    
     </form>
+    <button type="button" id="next" onclick="this.blur(); if (ValidateSliderFormPart2(document.affcectForm)) {experiment.next();}">Next</button>
+    <!--
+    <button type="button" id="nextToPart2" onclick="this.blur(); if (ValidateSliderFormPart1(document.affectForm)) {document.getElementById('questionPart2').hidden=false;document.getElementById('questionPart1').hidden=true;document.getElementById('nextToPart2').hidden=true;document.getElementById('next').hidden=false;}">Next</button>
+    <button type="button" id="next" onclick="this.blur(); if (ValidateSliderFormPart2(document.affectForm)) {experiment.next();document.getElementById('questionPart2').hidden=true;document.getElementById('questionPart1').hidden=false;document.getElementById('nextToPart2').hidden=false;document.getElementById('next').hidden=true;}">Next</button>
+    -->
+    </div>
 </div>
-</div>
+
 
 <div class="slide" id="askInfo">
     
@@ -301,7 +342,7 @@ function pressEnter(e) {
 <div class="slide" id="finished">
   You're finished - thanks for participating! Submitting to Mechanical Turk...
 </div>
-<script src="affectPriors-affect_v2.js"></script>
+<script src="hyperbole_experiment_v2.js"></script>
 
 </body>
 </html>
