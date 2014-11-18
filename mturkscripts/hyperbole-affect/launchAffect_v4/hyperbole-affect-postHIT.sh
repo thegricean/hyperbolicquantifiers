@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+pushd /Applications/aws-mturk-clt-1.3.0/bin
+./loadHITs.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 -label /Users/justinek/Dropbox/Work/Grad_school/Research/hyperbolicquantifiers/mturkscripts/hyperbole-affect/launchAffect_v4//hyperbole-affect -input /Users/justinek/Dropbox/Work/Grad_school/Research/hyperbolicquantifiers/mturkscripts/hyperbole-affect/launchAffect_v4//hyperbole-affect.input -question /Users/justinek/Dropbox/Work/Grad_school/Research/hyperbolicquantifiers/mturkscripts/hyperbole-affect/launchAffect_v4//hyperbole-affect.question -properties /Users/justinek/Dropbox/Work/Grad_school/Research/hyperbolicquantifiers/mturkscripts/hyperbole-affect/launchAffect_v4//hyperbole-affect.properties -maxhits 1
+popd
