@@ -239,3 +239,4 @@ ggplot(cookies.10, aes(x=eatenQuant, y=rating, color=quantifier)) +
   geom_errorbar(aes(ymin=rating-ci, ymax=rating+ci), width=0.05) +
   theme_bw() +
   scale_color_manual(values=c("#ff6666", "#66cccc", "gray"))
+

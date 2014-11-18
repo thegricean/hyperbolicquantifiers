@@ -1,0 +1,105 @@
+(define (item-prior item)
+(case item
+	(('M&Ms) (multinomial states '(0.0828475654166175 0.133431578371497 0.111347306748723 0.12952327305573 0.087922072941205 0.110571136012825 0.0790721375135575 0.07182018186699 0.0679118431368688 0.065190990175572 0.0603619147605292)))
+	(('cookies) (multinomial states '(0.108689177773164 0.240449355551893 0.182446062910045 0.141656962287578 0.10011539970189 0.0686563048202675 0.0446299539653082 0.0356687179237758 0.0320656165582607 0.0255380128682275 0.020084435639516)))
+	(('pies) (multinomial states '(0.322940061895255 0.33650750369824 0.0989011920862075 0.0601934946390225 0.0402567738511675 0.0271656694612793 0.0296946336830543 0.0231128991630908 0.0247383665305607 0.0191711067928468 0.0173182981993358)))
+))
+(define (upset-prior item)
+(case item
+	(('M&Ms) (list '(0 0.173173577454468) '(1 0.14633202162135) '(2 0.184043296034463) '(3 0.206294037001513) '(4 0.37050994449476) '(5 0.289376691608994) '(6 0.510431518715828) '(7 0.530061383582435) '(8 0.645676434314069) '(9 0.509016297012641) '(10 0.588645876709034) ))
+	(('cookies) (list '(0 0.410192144651966) '(1 0.151126328361367) '(2 0.20412006580249) '(3 0.25956481006134) '(4 0.419334732498588) '(5 0.551309090753617) '(6 0.494489546741585) '(7 0.635295463052002) '(8 0.693489635652503) '(9 0.755066572731144) '(10 0.723614318520993) ))
+	(('pies) (list '(0 0.396925994692331) '(1 0.147290234648723) '(2 0.298800700068302) '(3 0.436854997638559) '(4 0.461406573734272) '(5 0.802968984976376) '(6 0.71190525043122) '(7 0.727092956403416) '(8 0.737507086786199) '(9 0.88174995027637) '(10 0.83184893798825) ))
+))
+(define (happy-prior item)
+(case item
+	(('M&Ms) (list '(0 0.579116739007609) '(1 0.57790473485788) '(2 0.551406239231129) '(3 0.551177814128479) '(4 0.584862067593136) '(5 0.52768822492397) '(6 0.391966687497231) '(7 0.344073048427573) '(8 0.291573496218163) '(9 0.392807462988149) '(10 0.364918934026301) ))
+	(('cookies) (list '(0 0.299215287321162) '(1 0.735079851042106) '(2 0.681412731936723) '(3 0.578024199290087) '(4 0.48956795388326) '(5 0.468448829067093) '(6 0.434893853963569) '(7 0.458876119088923) '(8 0.29258338103208) '(9 0.282814241709111) '(10 0.309655186575811) ))
+	(('pies) (list '(0 0.378806022367624) '(1 0.758109693947673) '(2 0.577180434702938) '(3 0.53220730652079) '(4 0.440551590534536) '(5 0.287304539419387) '(6 0.364182844788403) '(7 0.331912389995149) '(8 0.322073071315844) '(9 0.269990420706932) '(10 0.204830278236207) ))
+))
+(define (surprised-prior item)
+(case item
+	(('M&Ms) (list '(0 0.338399639116845) '(1 0.371862535134184) '(2 0.315510574639007) '(3 0.248537855615254) '(4 0.418778280726538) '(5 0.432752927452125) '(6 0.644920031120034) '(7 0.547012178994717) '(8 0.719642511952544) '(9 0.636741763700509) '(10 0.679108115557521) ))
+	(('cookies) (list '(0 0.606453053355125) '(1 0.209335860666042) '(2 0.262085678833416) '(3 0.337110324214075) '(4 0.451811916870743) '(5 0.681761756490567) '(6 0.683572018334026) '(7 0.795067809791791) '(8 0.802376422057704) '(9 0.802343618617945) '(10 0.876069930545575) ))
+	(('pies) (list '(0 0.645336818767661) '(1 0.551831796878641) '(2 0.42602645327042) '(3 0.530074085039455) '(4 0.676679340473485) '(5 0.861090102881329) '(6 0.790750742961562) '(7 0.796902870356906) '(8 0.884901803404706) '(9 0.879335741932326) '(10 0.840983715762387) ))
+))
+;; Doesn't work; requires empirical priors
+;; Has "one" as alternative
+
+(define (goal-prior) (multinomial goals '(0.5 0.167 0.167 0.167)))
+(define depth 1)
+(define hardness 1)
+
+(define total 10)
+(define states (list '0 '1 '2 '3 '4 '5 '6 '7 '8 '9 '10))
+(define items (list 'M&Ms 'cookies 'pies))
+
+(define utterances (list 'some 'all 'one 'none))
+(define (utterance-prior) (uniform-draw utterances))
+
+(define goals
+(list 'how-many
+'upset
+'happy
+'surprised
+))
+
+
+(define (sample-affect state affect-prior)
+(let ((current-state-affect-pair (first affect-prior)))
+(if (equal? state (first current-state-affect-pair))
+(if (flip (second current-state-affect-pair))
+'1
+'0)
+(sample-affect state (rest affect-prior)))))
+
+
+(define (literal-interpretation utterance state)
+(case utterance
+(('all) (equal? state '10))
+(('some) (> state 0))
+(('one) (equal? state '1))
+(('none) (equal? state '0))
+))
+
+(define (goal-satisfied? goal listener-interp speaker-world)
+(case goal
+(('how-many) (equal? (first listener-interp) (first speaker-world)))
+(('upset) (equal? (second listener-interp) (second speaker-world)))
+(('happy) (equal? (third listener-interp) (third speaker-world)))
+(('surprised) (equal? (fourth listener-interp) (fourth speaker-world)))
+))
+
+
+(define speaker
+(mem (lambda (state upsetness happiness surprisal goal item depth)
+(enumeration-query
+(define utterance (utterance-prior))
+utterance
+(goal-satisfied? goal (apply multinomial (listener utterance item depth))
+(list state upsetness happiness surprisal))
+))))
+
+(define listener
+(mem (lambda (utterance item depth)
+(enumeration-query
+(define state (item-prior item))
+(define upsetness (sample-affect state (upset-prior item)))
+(define happiness (sample-affect state (happy-prior item)))
+(define surprisal (sample-affect state (surprised-prior item)))
+(define goal (goal-prior))
+
+(list state upsetness happiness surprisal)
+
+(if (equal? depth 0)
+(literal-interpretation utterance state)
+(equal? utterance
+(apply multinomial (speaker state upsetness happiness surprisal goal item (- depth 1)))))
+))))
+
+(define (interpret utterance item)
+(listener utterance item depth))
+
+(list (interpret 'some 'M&Ms) (interpret 'all 'M&Ms)
+(interpret 'some 'cookies) (interpret 'all 'cookies)
+(interpret 'some 'pies) (interpret 'all 'pies))
+;(barplot (interpret 'all 'cookies))

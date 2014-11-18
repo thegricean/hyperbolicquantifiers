@@ -1,7 +1,7 @@
 import sys, re, string
 
 f = open(sys.argv[1], "r")
-print "quantifier,eatenQuant,affect,modelProb"
+print "quantifier,eatenQuant,upset,happy,surprised,modelProb"
 for l in f:
     l = l.strip()
     toks = l.split(")) (((")

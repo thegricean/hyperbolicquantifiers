@@ -1,0 +1,143 @@
+; Hyperbolic quantifiers model with priors for 10 cookies
+
+(define total 10)
+(define states (list '0 '1 '2 '3 '4 '5 '6 '7 '8 '9 '10))
+
+(define (state-prior) 
+  (multinomial states 
+    '(0.10635272  
+      0.28832821  
+      0.17936038  
+      0.11937209
+      0.09061638
+      0.05776802
+      0.04467551
+      0.03458197
+      0.02957353
+      0.02573270
+      0.02363849)))
+
+(define happy-prior 
+  (list
+  '(0 0.21)
+  '(1 0.70625)
+  '(2 0.61875)
+  '(3 0.54375)
+  '(4 0.416666667)
+  '(5 0.533333333)
+  '(6 0.366666667)
+  '(7 0.428125)
+  '(8 0.2425)
+  '(9 0.2125)
+  '(10 0.207142857)))
+
+(define upset-prior
+  (list
+    '(0 0.375)
+    '(1 0.06875)
+    '(2 0.23125)
+    '(3 0.26875)
+    '(4 0.4)
+    '(5 0.383333333)
+    '(6 0.444444444)
+    '(7 0.5625)
+    '(8 0.64)
+    '(9 0.683333333)
+    '(10 0.739285714)))
+
+(define surprised-prior
+  (list
+    '(0 0.585)
+    '(1 0.196875)
+    '(2 0.24375)
+    '(3 0.33125)
+    '(4 0.466666667)
+    '(5 0.5625)
+    '(6 0.586111111)
+    '(7 0.665625)
+    '(8 0.8275)
+    '(9 0.754166667)
+    '(10 0.885714286)))
+
+(define neutral-prior 
+  (list
+    '(0 0.665)
+    '(1 0.55)
+    '(2 0.50625)
+    '(3 0.525)
+    '(4 0.55)
+    '(5 0.495833333)
+    '(6 0.341666667)
+    '(7 0.31875)
+    '(8 0.2625)
+    '(9 0.2875)
+    '(10 0.207142857)))
+
+
+(define depth 1)
+(define hardness 1)
+
+(define utterances (list 'some 'all))
+(define (utterance-prior) (uniform-draw utterances))
+
+(define goals 
+  (list 'roughly
+        ))
+
+(define (goal-prior) (uniform-draw goals))
+
+
+(define (sample-affect state affect-prior)
+  (let ((current-state-affect-pair (first affect-prior)))
+    (if (equal? state (first current-state-affect-pair))
+        (if (flip (second current-state-affect-pair))
+            '1
+            '0)
+        (sample-affect state (rest affect-prior)))))
+
+
+(define (literal-interpretation utterance state)
+  (case utterance
+        (('all) (equal? state '10))
+        (('some) (> state 0))
+        ))
+
+(define (goal-satisfied? goal listener-interp speaker-world)
+  (case goal
+    (('roughly') (< (abs (- (first litesner-interp) (first speaker-world))) 2))
+    (('how-many) (equal? (first listener-interp) (first speaker-world)))
+    (('upset) (equal? (second listener-interp) (second speaker-world)))
+    (('happy) (equal? (third listener-interp) (third speaker-world)))
+    (('surprised) (equal? (fourth listener-interp) (fourth speaker-world)))
+      ))
+
+
+(define speaker
+  (mem (lambda (state upsetness happiness surprisal goal depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   utterance
+    (goal-satisfied? goal (apply multinomial (listener utterance depth)) (list state upsetness happiness surprisal))
+   ))))
+
+(define listener
+  (mem (lambda (utterance depth)
+  (enumeration-query
+   (define state (state-prior))
+   (define upsetness (sample-affect state upset-prior))
+   (define happiness (sample-affect state happy-prior))
+   (define surprisal (sample-affect state surprised-prior))
+   (define goal (goal-prior))
+   
+   (list state upsetness happiness surprisal)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance state)
+       (equal? utterance
+               (apply multinomial (speaker state upsetness happiness surprisal goal (- depth 1)))))
+   ))))
+
+(define (interpret utterance) 
+  (listener utterance depth))
+
+(list (interpret 'some) (interpret 'all))

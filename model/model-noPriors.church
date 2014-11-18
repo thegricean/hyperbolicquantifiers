@@ -1,0 +1,78 @@
+;; Doesn't work; requires empirical priors
+
+(define (goal-prior) (multinomial goals '(0.5 0.167 0.167 0.167)))
+(define depth 1)
+(define hardness 1)
+
+(define total 10)
+(define states (list '0 '1 '2 '3 '4 '5 '6 '7 '8 '9 '10))
+(define items (list 'M&Ms 'cookies 'pies))
+
+(define utterances (list 'some 'all))
+(define (utterance-prior) (uniform-draw utterances))
+
+(define goals 
+  (list 'how-many
+        'upset 
+        'happy
+        'surprised
+        ))
+
+
+(define (sample-affect state affect-prior)
+  (let ((current-state-affect-pair (first affect-prior)))
+    (if (equal? state (first current-state-affect-pair))
+        (if (flip (second current-state-affect-pair))
+            '1
+            '0)
+        (sample-affect state (rest affect-prior)))))
+
+
+(define (literal-interpretation utterance state)
+  (case utterance
+        (('all) (equal? state '10))
+        (('some) (> state 0))
+        ))
+
+(define (goal-satisfied? goal listener-interp speaker-world)
+  (case goal
+    (('how-many) (equal? (first listener-interp) (first speaker-world)))
+    (('upset) (equal? (second listener-interp) (second speaker-world)))
+    (('happy) (equal? (third listener-interp) (third speaker-world)))
+    (('surprised) (equal? (fourth listener-interp) (fourth speaker-world)))
+      ))
+
+
+(define speaker
+  (mem (lambda (state upsetness happiness surprisal goal item depth)
+  (enumeration-query
+   (define utterance (utterance-prior))
+   utterance
+    (goal-satisfied? goal (apply multinomial (listener utterance item depth))
+                     (list state upsetness happiness surprisal))
+   ))))
+
+(define listener
+  (mem (lambda (utterance item depth)
+  (enumeration-query
+   (define state (item-prior item))
+   (define upsetness (sample-affect state (upset-prior item)))
+   (define happiness (sample-affect state (happy-prior item)))
+   (define surprisal (sample-affect state (surprised-prior item)))
+   (define goal (goal-prior))
+   
+   (list state upsetness happiness surprisal)
+
+   (if (equal? depth 0)
+       (literal-interpretation utterance state)
+       (equal? utterance
+               (apply multinomial (speaker state upsetness happiness surprisal goal item (- depth 1)))))
+   ))))
+
+(define (interpret utterance item) 
+  (listener utterance item depth))
+
+(list (interpret 'some 'M&Ms) (interpret 'all 'M&Ms) 
+      (interpret 'some 'cookies) (interpret 'all 'cookies)
+      (interpret 'some 'pies) (interpret 'all 'pies))
+;(barplot (interpret 'all 'cookies))
