@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+\usepackage[hmargin={1in},vmargin={1in,1in},foot={.6in}]{geometry}   
+\geometry{letterpaper} 
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}    
+%\geometry{landscape}          
+%\usepackage[parfill]{parskip}
+\usepackage{color,graphicx}
+%\usepackage{covington}
+%\usepackage{xyling}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{graphicx,color}
+%\usepackage{theorem}
+%\usepackage{tabularx}
+%\usepackage{subfig}
+%\usepackage{vowel}
+%\usepackage{mathrsfs}
+%\usepackage{varioref}
+%\usepackage{textcomp}
+%\usepackage{avm}
+%\usepackage{textcomp}
+%\usepackage{mflogo}
+%\usepackage{wasysym}
+%\usepackage{pstricks, pst-plot, pst-node, pst-tree, colortab}
+%\usepackage{qtree}
+ %\usepackage{tree-dvips}
+% \usepackage{linguex}
+\usepackage{gb4e}
+ \usepackage{multirow}
+% \usepackage[stable]{footmisc}
+% \usepackage{pifont}
+%\usepackage{todonotes}
+%\usepackage{natbib}
+\usepackage{apacite}
+%\usepackage[normalem]{ulem}
+
+ %\setlength{\parskip}{.55ex plus 0.1ex}
+
+
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{plain} % options: empty , plain , fancy
+\lhead{}\chead{}\rhead{}
+\renewcommand{\headrulewidth}{.3pt}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+%\renewcommand{\footrulewidth}{.3pt}
+\newcommand{\txtp}{\textipa}
+\renewcommand{\rm}{\textrm}
+\newcommand{\sem}[1]{\mbox{$[\![$#1$]\!]$}}
+\newcommand{\lam}{$\lambda$}
+\newcommand{\lan}{$\langle$}
+\newcommand{\ran}{$\rangle$}
+\newcommand{\type}[1]{\ensuremath{\left \langle #1 \right \rangle }}
+\newcommand{\defeq}{$\mathrel{\mathop:}=$ }
+\renewcommand{\and}{$\wedge$ }
+
+
+%\renewcommand{\Extopsep}{2pt}
+
+
+\newcommand{\bex}{\begin{examples}}
+\newcommand{\eex}{\end{examples}}
+
+%bullet points
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+%numbering, non sequential
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+\renewcommand{\abstractname}{The goal:}
+
+
+\definecolor{Red}{RGB}{255,0,0}
+\newcommand{\red}[1]{\textcolor{Red}{#1}}
+
+
+\begin{document}
+
+\begin{center}\textbf{When ``all" means not all: nonliteral interpretations of universal quantifiers}\\*[5pt]
+\end{center}
+
+\vspace{-11pt}
+
+A great deal of research has examined informativeness-based accounts of strengthening ``some" to mean \emph{not all} (cite); less well studied is the converse effect in which ``all" can be relaxed to mean \emph{not all}. For example, ``It's autumn, and all of the leaves are turning red" means that a lot (but not all) of the leaves are turning red; ``Bob took all of the credit" means that Bob took more credit than he deserved, and the speaker is upset about it. Recent work has shown that modeling language understanding as recursive social reasoning can produce hyperbolic interpretations of utterances as well as the relevant affective subtexts (cite). Here we describe two experiments that explore people's interpretations of ``all" and present a computational model that predicts these interpretations by reasoning about informativeness with respect to the speaker's communicative goal.
+
+\textbf{Experiment 1} examines how interpretations of ``all" vary based on prior domain knowledge. In Exp 1a, 60 participants on Mechanical Turk read scenarios in which a character Alice brought 10 M\&MÕs, cookies, or pies to a party and rated how likely it is that another character Bob ate certain amounts of the items. Fig. 1 (\emph{prior}) shows the average prior probability of Bob eating various amounts given the three food types. In Exp 1b, 40 participants read scenarios in which Alice said to a friend, ``Bob ate some/all of the M\&M's/cookies/pies!" Participants rated how likely it is that Bob ate certain amounts of the items. Fig. 1 (\emph{human}) shows participants' interpretations of Alice's utterance ``all" given different food types. Results suggest that ``all" is more likely to be interpreted hyperbolically when its literal meaning is unlikely under the prior distribution. \textbf{Experiment 2} examines the affect communicated with hyperbolic uses of ``all." In Exp 2a, 40 participants rated how Alice feels given that Bob ate certain amounts of the items; in general, Alice feels more negative the more items Bob eats. In Exp 2b, 60 participants rated how Alice feels given that Bob ate certain amounts of the items \emph{and} that she said: ``Bob ate some/all of the M\&M's/cookies/pies!" Even when Bob did not eat all of the items, participants rate Alice as feeling more negative when she says ``all" than when she says ``some" (Fig. 2). This suggests that the hyperbolic use of ``all" conveys affect beyond what is \emph{a priori} associated with the number of items eaten.
+
+We present an extended \textbf{Rational Speech Act model} in which the speaker may want to communicate how many items Bob ate \emph{or} how she feels about it. If Alice wants to communicate negative feelings about Bob, saying ``Bob ate all of the pies" will achieve this effect. Since a pragmatic listener reasons about Alice's communicative goal and knows that it is highly unlikely Bob ate all of the pies, the listener will infer that Bob ate \emph{some} of the pies, but Alice feels negative about it. This model produces interpretations that closely match humans' (r=0.91) (Fig. 1 \emph{model}) and infers additional affect from hyperbolic uses of ``all" (Fig. 2). Taking together the empirical results and model predictions, we discuss implications on the role of prior knowledge in language processing as well as the social and affective information conveyed through nonliteral language.
+
+%In order to recover the intended nonliteral meaning, a pragmatic listener needs to incorporate linguistic information, background knowledge, and the speaker's communicative goal. 
+\begin{figure}[h]
+\begin{minipage}[b]{.6\textwidth}
+\includegraphics[width=10cm, height=4cm]{figure1.pdf}
+\caption{Fig. 1}
+\end{minipage}
+\begin{minipage}[b]{.4\textwidth}
+\includegraphics[width=6.5cm, height=4cm]{figure2.pdf}
+\caption{Fig. 2}
+\end{minipage}
+
+\label{figure}
+\end{figure}
+
+\newpage
+
+\bibliographystyle{chicago}
+\bibliography{greg.bib}
+
+
+
+
+\end{document}
