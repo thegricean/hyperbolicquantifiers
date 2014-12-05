@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  4 DEC 2014 17:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  5 DEC 2014 12:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -352,10 +352,8 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10.95> not available
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 88.
 
-Overfull \hbox (5.32141pt too wide) in paragraph at lines 88--89
-[]\OT1/phv/m/n/10.95 A great deal of re-search has ex-am-ined informativeness-b
-ased ac-counts of strength-en-ing ``some"
- []
+
+LaTeX Warning: Citation `a degen paper' undefined on input line 88.
 
 Missing character: There is no Õ in font phvr7t!
 <figure1.pdf, id=1, 433.62pt x 250.9375pt>
@@ -368,7 +366,7 @@ Overfull \hbox (2.6867pt too wide) in paragraph at lines 97--99
 [][] 
  []
 
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 99.
 <figure2.pdf, id=2, 289.08pt x 252.945pt>
 File: figure2.pdf Graphic file (type pdf)
@@ -383,29 +381,30 @@ Overfull \hbox (2.32138pt too wide) in paragraph at lines 96--105
 [1
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figur
-e1.pdf> <./figure2.pdf>]
-No file CUNY-all.bbl.
-(./CUNY-all.aux)
+e1.pdf> <./figure2.pdf>] (./CUNY-all.bbl
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 1.
+) [2] (./CUNY-all.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4771 strings out of 493315
- 68003 string characters out of 6137904
- 140045 words of memory out of 5000000
- 8157 multiletter control sequences out of 15000+600000
- 13442 words of font info for 27 fonts, out of 8000000 for 9000
+ 4789 strings out of 493315
+ 68274 string characters out of 6137904
+ 140311 words of memory out of 5000000
+ 8172 multiletter control sequences out of 15000+600000
+ 15681 words of font info for 30 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,8n,43p,1409b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,43p,1340b,440s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2013/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/
 2013/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/te
 xmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on CUNY-all.pdf (1 page, 42861 bytes).
+Output written on CUNY-all.pdf (2 pages, 46826 bytes).
 PDF statistics:
- 33 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 36 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
