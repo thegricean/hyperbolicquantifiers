@@ -2,11 +2,19 @@ library(ggplot2)
 library(reshape2)
 library(plyr)
 source("~/Dropbox/Work/Grad_school/Research/Utilities/summarySE.R")
+setwd("/Users/titlis/cogsci/projects/hyperbolicquantifiers/data/hyperbolicquantifiers/rscripts")
+source("summarySE.R")
 
 #####################################
 # Affect priors
 #####################################
 affect.priors <- read.csv("../data/affectPriors/long_v2_60.csv")
+
+## analyze p(upset) ~ eatenQuant
+# higher upsetness ratings with increasing number of eaten items
+m = lmer(upset ~ eatenQuant + (1|workerID) + (1|food), data=affect.priors)
+summary(m)
+
 affect.priors$totalQuant <- factor(affect.priors$totalQuant)
 affect.priors$eatenQuant <- factor(affect.priors$eatenQuant)
 affect.priors$food <- factor(affect.priors$food, levels=c("M&M's", "cookies", "pies"))
@@ -133,6 +141,8 @@ ggplot(food.summary, aes(x=eatenQuant, y=probability, color=quantifier)) +
   theme_bw() +
   facet_grid(.~food) 
 
+head(food)
+
 ##############################################
 # Price priors
 #############################################
@@ -163,6 +173,24 @@ ggplot(food.summary, aes(x=eatenQuant, y=probability, color=quantifier)) +
 #write.csv(food.summary, "../data/hyperbole/hyperbole_prior_v2_means.csv")
 
 ############################################
+## analyze p(all-eaten|"all") ~ prior expectation
+############################################
+
+rownames(priors.summary) = paste(priors.summary$food,priors.summary$eatenQuant)
+tmp = ddply(priors.summary, .(food), summarize, expectation=sum(eatenQuant*probability))
+head(tmp)
+rownames(tmp) = tmp$food
+food$prior_expectation = tmp[as.character(food$food),]$expectation
+
+alleaten = subset(food, quantifier == "all" & eatenQuant == "10")
+alleaten = droplevels(alleaten)
+nrow(alleaten)
+
+# log odds of all items eaten increases with increasing expectation of prior distribution (ie decreases with decreasing expectation)
+m = lmer(probability ~ prior_expectation + (1|workerID),data=alleaten)
+summary(m)
+
+############################################
 # Affect ratings
 ############################################
 
@@ -178,6 +206,17 @@ affect.long <- melt(data=affect, id.vars=c("workerID", "gender", "age", "income"
 
 colnames(affect.long)[13] <- "affect"
 colnames(affect.long)[14] <- "probAffect"
+
+## analyze upsetness ratings as a function of quantifier for cases of not all items eaten
+head(affect.long)
+nrow(affect.long)
+dd = subset(affect.long, eatenQuant != 10 & affect == "upset" & quantifier != "none") # exclude 1394 cases of all items eaten, non-upsetness affect, and "none", to get only not all items eaten, upsetness, and some/all
+nrow(dd)
+dd = droplevels(dd)
+summary(dd)
+
+m = lmer(probAffect ~ quantifier + eatenQuant + (1+quantifier+ eatenQuant|workerID) + (1|food), data=dd)
+summary(m)
 
 #########################
 # Z score ratings
