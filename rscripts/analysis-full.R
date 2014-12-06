@@ -215,6 +215,7 @@ nrow(dd)
 dd = droplevels(dd)
 summary(dd)
 
+# affect is lower for "some" than for "all"
 m = lmer(probAffect ~ quantifier + eatenQuant + (1+quantifier+ eatenQuant|workerID) + (1|food), data=dd)
 summary(m)
 
