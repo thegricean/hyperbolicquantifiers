@@ -18,3 +18,6 @@ head(d[d$Word == "nothing",]$Sentence,5)
 table(d$Word)
 table(d$Word,d$Partitive)
 sort(table(d$Phrase))
+
+
+sample(d[d$Word == "all",]$Sentence,50)
