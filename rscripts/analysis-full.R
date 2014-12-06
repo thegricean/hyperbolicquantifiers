@@ -3,9 +3,9 @@ library(reshape2)
 library(plyr)
 source("~/Dropbox/Work/Grad_school/Research/Utilities/summarySE.R")
 
-#####################################
+############################################################
 # Affect priors
-#####################################
+############################################################
 affect.priors <- read.csv("../data/affectPriors/long_v2_60.csv")
 affect.priors$totalQuant <- factor(affect.priors$totalQuant)
 affect.priors$eatenQuant <- factor(affect.priors$eatenQuant)
@@ -42,9 +42,9 @@ ggplot(affect.priors.summary, aes(x=eatenQuant, y=probit)) +
 
 #write.csv(affect.priors.summary, "../data/affectPriors/affectPriors_v2_60.csv")
 
-####################
-# PCA
-###################
+#######
+# PCA #
+#######
 comps <- princomp(data=affect.priors, ~ upset + happy + surprised + neutral, cor=FALSE, scores=TRUE)
 summary(comps)$loadings
 biplot(comps)
@@ -105,9 +105,9 @@ ggplot(affect.priors.pca.probit.summary, aes(x=eatenQuant, y=value)) +
 
 #write.csv(affect.priors.pca.probit.summary, "../data/affectPriors/affectPriors_v2_pca_probit_means.csv")
 
-#####################################
+##########################################################################
 # Hyperbole judgments
-#####################################
+##########################################################################
 food <- read.csv("../data/hyperbole/long_v3.csv")
 food$food <- factor(food$food, levels=c("M&M's", "cookies", "pies"))
 food$totalQuant <- factor(food$totalQuant)
