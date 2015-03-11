@@ -1,16 +1,16 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  15 JAN 2015 16:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  5 FEB 2015 22:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**exprag2015.tex
-(./exprag2015.tex
+**CUNY-all-revised.tex
+(./CUNY-all-revised.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2013/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -228,8 +228,8 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \f@ncyO@olf=\skip60
 \f@ncyO@orf=\skip61
 )
-(./exprag2015.aux)
-\openout1 = `exprag2015.aux'.
+(./CUNY-all-revised.aux)
+\openout1 = `CUNY-all-revised.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
 LaTeX Font Info:    ... okay on input line 81.
@@ -267,12 +267,12 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=43.36243pt
-* \marginparwidth=44.0pt
+* \marginparwidth=59.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -348,67 +348,60 @@ LaTeX Info: Redefining \BHBI on input line 130.
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 83.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 88.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 89.
 Missing character: There is no Õ in font phvr7t!
-LaTeX Font Info:    Try loading font information for U+msa on input line 91.
+LaTeX Font Info:    Try loading font information for U+msa on input line 93.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 91.
+LaTeX Font Info:    Try loading font information for U+msb on input line 93.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figure1.pdf, id=10, 433.62pt x 250.9375pt>
+)
+<figure1.pdf, id=1, 433.62pt x 250.9375pt>
 File: figure1.pdf Graphic file (type pdf)
  <use figure1.pdf>
-Package pdftex.def Info: figure1.pdf used on input line 115.
-(pdftex.def)             Requested size: 284.54257pt x 128.04152pt.
+Package pdftex.def Info: figure1.pdf used on input line 100.
+(pdftex.def)             Requested size: 270.31049pt x 102.42938pt.
 
-Overfull \hbox (2.6867pt too wide) in paragraph at lines 115--117
+Overfull \hbox (11.9438pt too wide) in paragraph at lines 100--103
 [][] 
  []
 
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 117.
-<figure2.pdf, id=11, 289.08pt x 252.945pt>
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 103.
+<figure2.pdf, id=2, 289.08pt x 252.945pt>
 File: figure2.pdf Graphic file (type pdf)
  <use figure2.pdf>
-Package pdftex.def Info: figure2.pdf used on input line 120.
-(pdftex.def)             Requested size: 184.93999pt x 128.03918pt.
+Package pdftex.def Info: figure2.pdf used on input line 107.
+(pdftex.def)             Requested size: 184.93999pt x 102.43057pt.
+ [1
 
-Overfull \hbox (2.54398pt too wide) in paragraph at lines 114--125
-[][] []
- []
-
-(./exprag2015.bbl
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 1.
-) [2 <./figure1.pdf> <./figure2.pdf>] (./exprag2015.aux) ) 
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figur
+e1.pdf> <./figure2.pdf>] (./CUNY-all-revised.aux) ) 
 Here is how much of TeX's memory you used:
- 4833 strings out of 493315
- 68998 string characters out of 6137904
- 142416 words of memory out of 5000000
- 8196 multiletter control sequences out of 15000+600000
- 19420 words of font info for 46 fonts, out of 8000000 for 9000
+ 4820 strings out of 493315
+ 68903 string characters out of 6137904
+ 140317 words of memory out of 5000000
+ 8189 multiletter control sequences out of 15000+600000
+ 17566 words of font info for 43 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,8n,43p,1244b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2
-013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2013/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2013/texmf-dist/f
-onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw
-/helvetic/uhvro8a.pfb>
-Output written on exprag2015.pdf (2 pages, 57502 bytes).
+ 38i,8n,43p,1526b,440s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/tex
+mf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2013/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
+pe1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw
+/helvetic/uhvr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/helvet
+ic/uhvro8a.pfb>
+Output written on CUNY-all-revised.pdf (1 page, 52671 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 37 PDF objects out of 1000 (max. 8388607)
+ 25 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
