@@ -1,2 +1,13 @@
-model/models_*
+*.DS_Store
 *.results
+*.question
+*.input
+*.properties
+*.tsv
+*.aux
+*.bbl
+*.blg
+*.log
+*.synctex.gz
+.RData
+.Rhistory
