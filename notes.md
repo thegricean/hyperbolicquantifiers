@@ -4,13 +4,15 @@ all of the things
 Questions/things to think about
 --------------------
 
-1. How is hyperbolic all different from or similar to all with domain restriction? QUD? Affect?
+1. How is hyperbolic "all" different from or similar to "all" with domain restriction?
 
 2. How can we get reliable judgments for hyperbolic uses of all?
 
-3. How can we manipulate and model salience of different domains?
+3. How can we manipulate salience of different domains, and how does that interact with hyperbolic interpretations?
 
-4. Time/events vs objects?
+4. Why is it easier to get hyperbolic readings when "all" quantifies over events or time (e.g. "He's studying all the time") than when it quantifies over objects (e.g. "He ate of the cookies")
+
+5. How is speaking hyperbolically different from lying?
 
 TODO
 --------------------
@@ -22,6 +24,8 @@ TODO
 2. Figure out how to systematically vary salience of domain, salience of affect as QUD, and plausibility of literal interpretations
 
 3. Figure out how to measure domain, interpretation, and affect (as well as corresponding priors)
+
+4. Figure out whether subjects think the speaker is lying or misinformed v.s. speaking hyperbolically
 
 ### Corpus
 
